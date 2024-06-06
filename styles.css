@@ -1,0 +1,1156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+
+/* Define the animation */
+@keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px); /* Move the header up */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* Bring the header back to its original position */
+    }
+}
+
+
+header {
+    position: fixed; /* Fix the header position */
+    top: 0; /* Place the header at the top of the viewport */
+    width: 100%; /* Make the header full width */
+    z-index: 1000; /* Ensure the header stays above other content */
+    background-color: #fff; /* Add a background color if needed */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+    animation: fadeInDown 0.5s ease-out;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+    
+}
+
+/* Styles for the top bar */
+.logo img {
+    width: 70px;
+    height: 70px;
+    margin-right: 5px;
+}
+
+.top-bar {
+    background: linear-gradient(120deg, #63b4f2 0%, #43619c 100%);
+    padding: 10px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container:hover{
+    transform: translateY(-5px)/* Adjust values for desired effect */
+}
+
+.bank-name {
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 30px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.bank-name:hover {
+    transform: translateY(-5px);
+    color: #fbfbfb; /* Optional: Change color on hover */
+}
+
+.sub-line {
+    margin-left: 100px;
+    color: #fff;
+    font-size: 16px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.sub-line:hover {
+    transform: translateY(-5px);
+    
+}
+
+.top-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 8px;
+    font-size: 14px;
+    text-decoration: underline;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.top-links a:hover {
+    transform: translateY(-10px);
+}
+
+
+
+/*NAVBAR*/
+.navbar {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Add transition for smooth movement */
+    
+}
+.navbar.scrolled {
+    transform: translateY(-20px); /* Move navbar up slightly when scrolled */
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav-item {
+    position: relative;
+    margin: 0 15px;
+}
+
+.nav-item a {
+    color: black;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+    transition: background 0.1s, color 0.3s;
+    font-weight: bold;
+}
+
+.nav-item a:hover {
+    background: rgba(0, 0, 0, 0.1);
+    
+    border-radius: 5px;
+    transform: translateY(-3px); /* Lift up on hover */
+    box-shadow: 0 8px 12px rgba(228, 216, 216, 0.2); /* Enhanced shadow on hover */
+}
+
+.nav-item:hover .dropdown,
+.dropdown li:hover .sub-dropdown {
+    display:inline-block;
+}
+
+.dropdown,
+.sub-dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    list-style: none;
+    top: 100%;
+    left: 0;
+    min-width: 250px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.sub-dropdown {
+    top: 0;
+    left: 100%;
+    min-width: 150px;
+    border-radius: 5px;
+}
+
+.dropdown li,
+.sub-dropdown li {
+    position: relative;
+}
+
+.dropdown li a,
+.sub-dropdown li a {
+    padding: 10px 20px;
+    color: black;
+    text-decoration: none;
+    display: block;
+    transition: background 0.2s;
+}
+
+.sub-dropdown li a {
+    color: grey;
+}
+
+.dropdown li:hover,
+.sub-dropdown li:hover {
+    background-color: #f4f4f4;
+}
+
+
+/* New visual enhancements for a premium look */
+
+
+.nav-item a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #0074cc;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-item a:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.dropdown,
+.sub-dropdown {
+    border: 1px solid #0074cc;
+}
+
+.dropdown li a:hover,
+.sub-dropdown li a:hover {
+    color: #0074cc;
+}
+
+
+/* Adding subtle animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.dropdown,
+.sub-dropdown {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Sub-menu arrow */
+.nav-item > a::after {
+    content: ' ▼';
+    font-size: 12px;
+    color: #101111;
+    margin-left: 5px;
+}
+/* Styles for login button */
+
+/* Added styling for the login button */
+.cta-button {
+    margin-top: 6px;
+    
+}
+
+/* Removed dropdown arrow from the login button */
+.cta-button a::after {
+    content: none; /* Remove the content */
+}
+
+
+.cta-button a {
+    /* background-color: rgb(237, 101, 101); */
+    color: #fff;
+    padding: 2px 3px; /* Adjust padding as needed */
+    border-radius: 3px;
+    /* transition: background-color 0.3s, color 0.3s; */
+}
+
+.cta-button {
+    margin-top: 5px;
+    padding: 8px 8px;
+    background: rgb(209, 118, 118);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    animation: fadeInUp 2s ease-out;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+
+/* Adding subtle animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.dropdown,
+.sub-dropdown {
+    animation: fadeIn 0.3s ease-in-out;
+}
+/* General content styling */
+.content {
+    padding: 20px;
+}
+
+
+/* General reset and body styling */
+
+
+/* Announcement section styling */
+.announcement-section {
+    background: linear-gradient(120deg, #e0f7ff, #ffffff);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 40px auto;
+    max-width: 1200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.announcement-marquee {
+    font-size: 19px;
+    color: #005bb5;
+    padding: 10px 0;
+    font-weight: bold;
+    background-color: #f0f8ff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.announcement-section p {
+    font-size: 19px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.announcement-section ul {
+    margin: 10px 0 20px 20px;
+    list-style-type: disc;
+}
+
+.announcement-section ul li {
+    margin-bottom: 10px;
+    color: #005bb5;
+    font-weight: bold;
+}
+
+.announcement-section a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 10px;
+    background-color: #005bb5;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.announcement-section a:hover {
+    background-color: #003f7f;
+    transform: scale(1.05);
+    transform: translateY(-10px) rotateX(6deg); /* Adjust values for desired effect */
+    
+}
+
+
+/* Add animations to enhance the visuals */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.announcement-section img {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    animation: float 3s ease-in-out infinite;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+
+/* Adding a soft gradient background to enhance the visuals */
+.announcement-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
+    z-index: -1;
+}
+
+/* Keyframe animation for fadeInUp */
+/* Keyframe animation for fadeInUp */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-section {
+    background: linear-gradient(120deg, #63b4f2 0%, #43619c 100%);
+    height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    transition: background 0.5s ease, transform 0.5s ease;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+    transform: translateY(-10px) rotateX(5deg); /* Adjust values for desired effect */
+}
+
+.hero-section:hover {
+    background: linear-gradient(120deg, #43619c 0%, #63b4f2 100%);
+    transform: scale(1.05); /* Slightly scales up the hero section */
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+    transform: translateY(-10px) rotateX(6deg); /* Adjust values for desired effect */
+}
+
+.hero-title {
+    font-size: 2em;
+    animation: fadeInUp 1s forwards; /* Animation to fade in and move up */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease; 
+    margin-top: 130px;
+}
+
+.hero-subtitle {
+    font-size: 1.5em;
+    animation: fadeInUp 1.5s forwards; /* Animation to fade in and move up, with delay */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    margin-top: 10px; /* Added margin for spacing */
+}
+
+
+
+/*EXPLORE*/
+
+.explore {
+    text-align: center;
+    background: linear-gradient(120deg, #e0f7ff, #ffffff);
+    padding: 40px 0;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.explore-title {
+    font-weight: bold;
+    color: #090a0a;
+    font-size: 2.0em;
+    margin: 10px 0;
+    text-decoration: underline;
+    opacity: 0; /* Initially hidden */
+    animation: fadeInUp 1s forwards; /* Animation to fade in and move up */
+    transform: translateY(20px);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.explore:hover .explore-title {
+    transform: translateY(0);
+    opacity: 1;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+}
+/* Hover effect for the heading */
+.explore-title:hover {
+    color: #007BFF; /* Change color on hover */
+    transform: translateY(-5px); /* Slight lift on hover */
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+}
+
+.explore-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    animation: fadeInUp 1s forwards; /* Animation to fade in and move up */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.explore-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    width: 30%;
+    animation: fadeInUp 1s forwards; /* Animation to fade in and move up */
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.explore:hover .explore-items,
+.explore:hover .explore-item {
+    transform: translateY(0);
+    opacity: 1;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+}
+
+.explore-item:hover {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+}
+
+.explore-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.explore-item::before {
+    content: "\201C";
+    font-size: 50px;
+    color: #005bb5;
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    opacity: 0.1;
+}
+
+.explore-item::after {
+    content: "\201D";
+    font-size: 50px;
+    color: #005bb5;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    opacity: 0.1;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+}
+/* Lift-up effect on hover for financial tools section */
+.explore:hover {
+    transform: translateY(-10px); /* Lift up effect */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Slightly more shadow on hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for lift and shadow */
+}
+
+/* Transition effects for heading */
+.explore-item h3:hover {
+    color: #0056b3; /* Change color on hover */
+    transform: translateY(0); /* Ensure it moves back to original position */
+    opacity: 1; /* Fully visible */
+    transition: transform 0.5s ease, opacity 0.5s ease, color 0.5s ease; /* Smooth transition */
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+    transform: translateY(-10px) rotateX(5deg); /* Adjust values for desired effect */
+}
+
+
+/* Banner styles */
+.slideshow-container {
+    max-width: 1200px;
+    position: relative;
+    margin: auto;
+    animation: fadeInUp 1s forwards; /* Animation to fade in and move up */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  
+  .slide {
+    display: none;
+    width: 100%;
+    animation: fadeInUp 1s forwards; /* Animation to fade in and move up */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: auto;
+    animation: fadeInUp 1s forwards; /* Animation to fade in and move up */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  .prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+    transform: translateY(-10px) rotateX(5deg); /* Adjust values for desired effect */
+  }
+  
+  .dots {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+  
+/* Testimonials section styling */
+.testimonials {
+    background: linear-gradient(120deg, #e0f7ff, #ffffff);
+    padding: 5px 5px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 100%;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    animation: fadeInUp 1s forwards; /* Animation to fade in and move up */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.testimonials::before, .testimonials::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.3) 25%, transparent 25%), linear-gradient(225deg, rgba(255,255,255,0.3) 25%, transparent 25%), linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%), linear-gradient(315deg, rgba(255,255,255,0.3) 25%, transparent 25%);
+    background-size: 10px 20px;
+    animation: move 10s linear infinite;
+}
+
+.testimonial-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+    transform: translateY(-10px) rotateX(5deg); /* Adjust values for desired effect */
+}
+
+.testimonials::after {
+    filter: blur(10px);
+}
+
+@keyframes move {
+    0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+    100% { background-position: 20px 20px, -20px -20px, 20px -20px, -20px 20px; }
+}
+
+.testimonials h2 {
+    font-size: 32px;
+    color: #000000;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1s forwards; /* Animation to fade in and move up */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease, color 0.5s ease; /* Added color transition */
+}
+
+.testimonials h2::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background: #070707;
+    display: block;
+    margin: 15px auto 0;
+    border-radius: 2px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hover effect for the testimonials heading */
+.testimonials h2:hover {
+    color: #007BFF; /* Change color on hover */
+    transform: translateY(-10px); /* Slight lift on hover */
+    transform: scale(1.05);
+}
+
+.testimonial-carousel .testimonial-item {
+    padding: 30px;
+    color: #333;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-carousel blockquote {
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.8;
+    color: #555;
+    position: relative;
+    padding: 20px 30px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s;
+}
+
+.testimonial-carousel blockquote:hover {
+    transform: scale(1.05);
+}
+
+.testimonial-carousel blockquote::before {
+    content: "\201C";
+    font-size: 50px;
+    color: #005bb5;
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    opacity: 0.1;
+}
+
+.testimonial-carousel blockquote::after {
+    content: "\201D";
+    font-size: 50px;
+    color: #005bb5;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    opacity: 0.1;
+}
+
+.testimonial-carousel cite {
+    display: block;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #005bb5;
+    text-align: right;
+}
+
+.slick-dots li button:before {
+    font-size: 12px;
+    color: #005bb5;
+    opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+    opacity: 1;
+}
+
+.slick-prev:before, .slick-next:before {
+    color: #005bb5;
+}
+
+/* Financial Tools section styling */
+/* Keyframe animation for fadeInUp */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.financial-tools h2 {
+    
+    font-size: 2.0em;
+    margin-top: 2rem;
+    margin-bottom: 20px;
+    color: #000000;
+    text-align: center;
+    text-decoration: underline;
+    animation: fadeInUp 1s forwards; /* Animation to fade in and move up */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease, color 0.5s ease, letter-spacing 0.5s ease; /* Added letter-spacing transition */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hover effect for the heading */
+.financial-tools h2:hover {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+    color: #007BFF; /* Change color on hover */
+    transform: translateY(-10px); /* Slight lift on hover */
+    letter-spacing: 2px; /* Increase letter-spacing on hover */
+}
+
+.financial-flex {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.calculator,
+.investment-portfolio-tracker {
+    flex: 1;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
+    animation: fadeInUp 1s forwards; /* Animation to fade in and move up */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Hover effect for the financial tools */
+.calculator:hover,
+.investment-portfolio-tracker:hover {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+    transform: translateY(-10px); /* Lift up on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.calculator {
+    background-color: #d3e8f4; /* Light blue */
+    width: 20%; /* Adjust width */
+
+}
+
+.investment-portfolio-tracker {
+    background-color: #d3e8f4;
+    width: 20%; /* Adjust width */
+}
+
+/* Lift-up effect on hover for financial tools section */
+.financial-tools:hover {
+    transform: translateY(-10px); /* Lift up effect */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Slightly more shadow on hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for lift and shadow */
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+}
+
+/* Transition effects for heading */
+.financial-tools h2:hover {
+    color: #0056b3; /* Change color on hover */
+    transform: translateY(0); /* Ensure it moves back to original position */
+    opacity: 1; /* Fully visible */
+    transition: transform 0.5s ease, opacity 0.5s ease, color 0.5s ease; /* Smooth transition */
+}
+
+
+
+/* Chatbot Styles */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    max-height: 500px;
+    background-color: rgb(34, 146, 226);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+    overflow: hidden;
+    animation: fadeInUp 1s forwards; /* Animation to fade in and move up*/
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease; 
+    margin-top: 130px;
+}
+
+.chatbot-header {
+    background-color: linear-gradient(120deg, #63b4f2 0%, #43619c 100%);
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+}
+
+.chatbot-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.chatbot-body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chatbot-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding-right: 10px;
+}
+
+.chatbot-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.chatbot-input input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 0;
+    outline: none;
+}
+
+.chatbot-input button {
+    background-color: linear-gradient(120deg, #63b4f2 0%, #43619c 100%);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chatbot-input button:hover {
+    background-color: linear-gradient(120deg, #63b4f2 0%, #43619c 100%);
+}
+
+/* Chatbot Icon */
+.chatbot-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(0, 103, 150);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    
+}
+
+.chatbot-icon img {
+    width: 50%;
+    height: 50%;
+}
+
+/* Chatbot Messages */
+.user-message, .bot-message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: #0074cc;
+    color: #fff;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.footer {
+    position: relative;
+    background-color: #626970;
+    color: #fff;
+    padding: 15px 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: first baseline;
+}
+
+.footer-column {
+    flex: 1;
+    margin-right: 10px; /* Reduced margin */
+    margin-left: 10px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+}
+
+.footer-column h3 {
+    font-size: 18px; /* Reduced font size */
+    margin-bottom: 8px;
+    transition: color 0.3s ease, transform 0.3s ease; /* Added transition for color and transform */
+}
+
+.footer-column ul {
+    list-style-type: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 5px;
+}
+
+.extra-info {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.extra-info p {
+    margin-bottom: 5px;
+}
+
+.social-icons {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+.social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-icons li:last-child {
+    margin-right: 0;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 20px;
+}
+
+.social-icons a:hover {
+    color: #fff;
+}
+
+/* Hover effect for the footer headings */
+.footer-column h3:hover {
+    color: #030303; /* Change to a lighter color on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.footer:hover {
+    transform: translateY(-20px);
+  }
+
+  
+  /* Add 3D effects */
+.slideshow-container .slide img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+
+  }
+  
+  .slideshow-container .slide:hover img {
+    transform: rotateY(180deg);
+  }
+  
+  /* Apply perspective to the parent container for 3D effect */
+body {
+    perspective: 1000px; /* Adjust as needed */
+}
+
+/* Apply 3D transform to elements */
+/* Example: */
+.hero-section {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease; /* Add transition for smooth movement */
+}
+
+.hero-section:hover {
+    transform: translateY(-10px) rotateX(5deg); /* Adjust values for desired effect */
+}
+
+/* Add 3D effect to other elements similarly */
